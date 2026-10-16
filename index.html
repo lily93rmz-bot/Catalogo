@@ -16,7 +16,7 @@
   <div class="app">
     <header class="topbar">
       <div class="brand"><div class="brand-mark" aria-hidden="true">♡</div><div><h1>Mi cobranza de catálogo</h1><p>Cklass y Andrea · sencillo, accesible y práctico</p></div></div>
-      <div class="top-actions"><button class="btn secondary" data-action="backup">↥ Respaldar datos</button><button class="btn secondary" data-action="restore">↧ Restaurar datos</button><input id="restoreInput" class="hidden" type="file" accept="application/json"></div>
+      <div class="top-actions"><span id="firebaseStatus" class="badge warn" role="status">Conectando a Firebase…</span><button class="btn secondary" data-action="backup">↥ Respaldar datos</button><button class="btn secondary" data-action="restore">↧ Restaurar datos</button><input id="restoreInput" class="hidden" type="file" accept="application/json"></div>
     </header>
 
     <main id="main">
@@ -71,7 +71,7 @@
     const blank=()=>({clients:[],orders:[],sales:[],payments:[],reminders:[],settings:{recargoDays:0,recargoType:'none',recargoValue:0}});
     let db=JSON.parse(localStorage.getItem(KEY)||'null')||blank();
     let lastDeleted=null;
-    const save=()=>localStorage.setItem(KEY,JSON.stringify(db));
+    const save=()=>{localStorage.setItem(KEY,JSON.stringify(db));window.dispatchEvent(new CustomEvent('cobranza:changed'));};
     const say=(msg)=>{document.getElementById('live').textContent='';setTimeout(()=>document.getElementById('live').textContent=msg,30);toast(msg)};
     const toast=msg=>{const el=document.getElementById('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.add('hidden'),3500)};
     const clientName=id=>db.clients.find(c=>c.id===id)?.name||'Cliente eliminado';
@@ -105,7 +105,52 @@
     ['salePrice','saleDiscount','saleCost','saleType','salePeriods','saleFrequency'].forEach(id=>document.getElementById(id).addEventListener('input',updateSalePreview));
     document.getElementById('clientSearch').addEventListener('input',renderClients);document.getElementById('productSearch').addEventListener('input',renderOrders);document.getElementById('reportMonth').addEventListener('input',renderReport);document.getElementById('restoreInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const incoming=JSON.parse(r.result);if(!incoming.clients||!incoming.sales)throw new Error();db={...blank(),...incoming};save();renderAll();say('Respaldo restaurado correctamente.')}catch{say('El archivo de respaldo no es válido.')}};r.readAsText(f)});
     document.getElementById('saleDate').value=today();document.getElementById('paymentDate').value=today();document.getElementById('reportMonth').value=today().slice(0,7);updateSalePreview();renderAll();
+    window.__cobranza={getState:()=>db,replaceState:(next)=>{db={...blank(),...next};localStorage.setItem(KEY,JSON.stringify(db));renderAll();}};
   })();
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+    const firebaseConfig={
+      apiKey:"AIzaSyAZPTM3NbcRQjhHfmZ0zLlB_IiAnK20Hyk",
+      authDomain:"catalogo-f43b0.firebaseapp.com",
+      projectId:"catalogo-f43b0",
+      storageBucket:"catalogo-f43b0.firebasestorage.app",
+      messagingSenderId:"603628306546",
+      appId:"1:603628306546:web:059eb3961844304d44c2eb"
+    };
+    const app=initializeApp(firebaseConfig),auth=getAuth(app),firestore=getFirestore(app);
+    const sharedDoc=doc(firestore,"workspaces","cobranzaCatalogo");
+    const status=document.getElementById('firebaseStatus');
+    let ready=false,remoteUpdate=false,lastPayload='';
+    const setStatus=(text,kind='warn')=>{status.textContent=text;status.className='badge '+kind;};
+    const getPayload=()=>JSON.stringify(window.__cobranza.getState());
+    const push=async()=>{if(!ready||remoteUpdate)return;const payload=getPayload();if(payload===lastPayload)return;try{await setDoc(sharedDoc,{payload,updatedAt:serverTimestamp(),lastWriter:auth.currentUser?.uid||null});lastPayload=payload;setStatus('Firebase sincronizado','ok');}catch(error){console.error(error);setStatus('Sin conexión; guardado local','warn');}};
+    window.addEventListener('cobranza:changed',()=>push());
+    window.addEventListener('online',()=>{setStatus('Conectando a Firebase…','warn');push();});
+    window.addEventListener('offline',()=>setStatus('Sin conexión; guardado local','warn'));
+    signInAnonymously(auth).catch(error=>{console.error(error);setStatus('Activa acceso anónimo en Firebase','danger');});
+    onAuthStateChanged(auth,async user=>{
+      if(!user)return;
+      setStatus('Usuario anónimo conectado','ok');
+      try{
+        const initial=await getDoc(sharedDoc);
+        if(!initial.exists())await push();
+        onSnapshot(sharedDoc,snap=>{
+          const data=snap.data();
+          if(!data?.payload)return;
+          if(data.payload===getPayload()){lastPayload=data.payload;setStatus('Firebase sincronizado','ok');return;}
+          remoteUpdate=true;
+          try{window.__cobranza.replaceState(JSON.parse(data.payload));lastPayload=data.payload;setStatus('Datos actualizados en tiempo real','ok');}
+          catch(error){console.error(error);setStatus('Error en datos remotos','danger');}
+          finally{remoteUpdate=false;}
+        },error=>{console.error(error);setStatus('Sin conexión; guardado local','warn');});
+        ready=true;
+        await push();
+      }catch(error){console.error(error);setStatus('Configura Firestore y sus reglas','danger');}
+    });
   </script>
 </body>
 </html>

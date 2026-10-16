@@ -10,6 +10,10 @@
     *{box-sizing:border-box}html{font-size:18px;scroll-behavior:smooth}body{margin:0;background:linear-gradient(135deg,#fff8fc,#f8f1ff);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}button,input,select,textarea{font:inherit}button{cursor:pointer}.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;z-index:20;background:#fff;padding:.7rem;border-radius:.6rem}.app{max-width:1250px;margin:auto;padding:1rem}.topbar{display:flex;gap:1rem;align-items:center;justify-content:space-between;padding:.7rem 0 1rem}.brand{display:flex;align-items:center;gap:.8rem}.brand-mark{display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:1rem;background:var(--primary);color:#fff;font-size:1.65rem;box-shadow:var(--shadow)}h1,h2,h3{line-height:1.15;margin:.25rem 0 .65rem}.brand h1{font-size:1.25rem}.brand p{margin:0;color:var(--muted);font-size:.85rem}.top-actions{display:flex;gap:.5rem;flex-wrap:wrap}.btn{border:2px solid transparent;border-radius:.8rem;padding:.65rem .9rem;background:#fff;color:var(--ink);font-weight:700;min-height:2.8rem;transition:.15s}.btn:hover,.btn:focus-visible{transform:translateY(-1px);box-shadow:0 0 0 4px rgba(125,47,96,.16);outline:none}.btn.primary{background:var(--primary);color:#fff}.btn.primary:hover,.btn.primary:focus-visible{background:var(--primary-dark)}.btn.secondary{background:var(--lav);color:var(--primary-dark)}.btn.danger{color:#fff;background:var(--danger)}.btn.small{font-size:.86rem;padding:.45rem .65rem;min-height:2.25rem}.quick-panel,.panel{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:1.2rem;box-shadow:var(--shadow);padding:1rem}.quick-panel{margin-bottom:1rem}.quick-head{display:flex;justify-content:space-between;gap:1rem;align-items:end;flex-wrap:wrap}.quick-head p{margin:.2rem 0;color:var(--muted)}.quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.75rem;margin-top:1rem}.quick{display:flex;align-items:center;gap:.7rem;text-align:left;min-height:4.1rem;border:2px solid #d9c5d3;border-radius:1rem;background:#fff;padding:.75rem;color:var(--ink);font-weight:800}.quick:hover,.quick:focus-visible{border-color:var(--primary);box-shadow:0 0 0 4px rgba(125,47,96,.15);outline:none}.quick .icon{font-size:1.55rem;flex:0 0 auto}.quick span:last-child{font-size:.95rem}.content{display:grid;grid-template-columns:1.3fr .7fr;gap:1rem}.panel{margin-bottom:1rem}.panel h2{color:var(--primary-dark);font-size:1.25rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.75rem}.stat{padding:.9rem;background:#fff7fb;border:1px solid #efd3e2;border-radius:.9rem}.stat strong{display:block;font-size:1.35rem;color:var(--primary-dark)}.muted{color:var(--muted)}.hidden{display:none!important}.view{scroll-margin-top:1rem}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.field{display:flex;flex-direction:column;gap:.25rem}.field.full{grid-column:1/-1}label{font-weight:750}.required{color:var(--danger)}input,select,textarea{width:100%;border:2px solid #cbb9c7;border-radius:.65rem;padding:.65rem;background:#fff;color:var(--ink)}input:focus,select:focus,textarea:focus{border-color:var(--primary);outline:3px solid rgba(125,47,96,.18)}textarea{min-height:5rem;resize:vertical}.form-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.toolbar{display:flex;gap:.6rem;flex-wrap:wrap;align-items:end;margin:.8rem 0}.toolbar .field{min-width:220px;flex:1}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:.75rem}.data-table{border-collapse:collapse;width:100%;min-width:650px;background:#fff}.data-table th,.data-table td{text-align:left;padding:.65rem;border-bottom:1px solid var(--line);vertical-align:top}.data-table th{background:#f4e9f2;color:var(--primary-dark)}.badge{display:inline-block;padding:.2rem .5rem;border-radius:999px;background:var(--lav);font-size:.8rem;font-weight:750}.badge.ok{background:#dff3e9;color:var(--ok)}.badge.warn{background:#fff0d5;color:var(--warn)}.badge.danger{background:#ffe0e6;color:var(--danger)}.notice{padding:.75rem 1rem;border-left:5px solid var(--primary);background:#f7eefa;border-radius:.5rem;margin:.7rem 0}.notice.warn{border-left-color:#c87600;background:#fff6e6}.empty{padding:1rem;border:1px dashed #cbb9c7;border-radius:.7rem;color:var(--muted)}.sr-live{position:fixed;left:-10000px;width:1px;height:1px;overflow:hidden}.footer{text-align:center;color:var(--muted);font-size:.85rem;padding:1rem}.modal{position:fixed;inset:0;background:rgba(33,20,31,.62);display:grid;place-items:center;padding:1rem;z-index:10}.modal-card{background:#fff;border-radius:1rem;max-width:560px;width:100%;padding:1rem;box-shadow:0 20px 60px rgba(0,0,0,.3)}.modal-head{display:flex;justify-content:space-between;gap:1rem;align-items:start}.close{border:0;background:transparent;font-size:1.6rem;color:var(--primary-dark)}.toast{position:fixed;right:1rem;bottom:1rem;z-index:30;max-width:360px;background:var(--ink);color:#fff;padding:.8rem 1rem;border-radius:.7rem;box-shadow:var(--shadow)}@media(max-width:850px){.content{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.top-actions{width:100%}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.app{padding:.75rem}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:430px){html{font-size:17px}.quick-grid{grid-template-columns:1fr}.quick{min-height:3.6rem}}
     @media print{body{background:#fff}.topbar,.quick-panel,.footer,.no-print{display:none!important}.panel{box-shadow:none;border:0}.view:not(#view-reports){display:none!important}}
   </style>
+  <style>
+    @media(max-width:850px){.top-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}.top-actions #firebaseStatus{grid-column:1/-1;text-align:center}.panel{padding:.85rem}.toolbar{align-items:stretch}.toolbar .btn{align-self:stretch}.modal{padding:.65rem}.modal-card{max-height:92vh;overflow:auto}}
+    @media(max-width:560px){html{font-size:16px}.quick-grid{grid-template-columns:1fr}.quick{min-height:3.65rem}.top-actions{grid-template-columns:1fr}.top-actions #firebaseStatus{grid-column:auto}.form-actions{flex-direction:column}.form-actions .btn{width:100%}.toolbar{flex-direction:column}.toolbar .field{min-width:0}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}.data-table{min-width:570px}.brand-mark{width:2.8rem;height:2.8rem}.brand h1{font-size:1.1rem}}
+  </style>
 </head>
 <body>
   <a class="skip" href="#main">Saltar al contenido principal</a>
@@ -105,52 +109,27 @@
     ['salePrice','saleDiscount','saleCost','saleType','salePeriods','saleFrequency'].forEach(id=>document.getElementById(id).addEventListener('input',updateSalePreview));
     document.getElementById('clientSearch').addEventListener('input',renderClients);document.getElementById('productSearch').addEventListener('input',renderOrders);document.getElementById('reportMonth').addEventListener('input',renderReport);document.getElementById('restoreInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const incoming=JSON.parse(r.result);if(!incoming.clients||!incoming.sales)throw new Error();db={...blank(),...incoming};save();renderAll();say('Respaldo restaurado correctamente.')}catch{say('El archivo de respaldo no es válido.')}};r.readAsText(f)});
     document.getElementById('saleDate').value=today();document.getElementById('paymentDate').value=today();document.getElementById('reportMonth').value=today().slice(0,7);updateSalePreview();renderAll();
-    window.__cobranza={getState:()=>db,replaceState:(next)=>{db={...blank(),...next};localStorage.setItem(KEY,JSON.stringify(db));renderAll();}};
+    window.__cobranza={getState:()=>db,replaceState:(next)=>{db={...blank(),...next};localStorage.setItem(KEY,JSON.stringify(db));renderAll();},replaceCollection:(name,items)=>{db[name]=items;localStorage.setItem(KEY,JSON.stringify(db));renderAll();},replaceSettings:(settings)=>{db.settings={...db.settings,...settings};localStorage.setItem(KEY,JSON.stringify(db));renderAll();}};
   })();
   </script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
     import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js";
-    import { getFirestore, doc, getDoc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+    import { getFirestore, collection, doc, getDoc, getDocs, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
-    const firebaseConfig={
-      apiKey:"AIzaSyAZPTM3NbcRQjhHfmZ0zLlB_IiAnK20Hyk",
-      authDomain:"catalogo-f43b0.firebaseapp.com",
-      projectId:"catalogo-f43b0",
-      storageBucket:"catalogo-f43b0.firebasestorage.app",
-      messagingSenderId:"603628306546",
-      appId:"1:603628306546:web:059eb3961844304d44c2eb"
-    };
+    const firebaseConfig={apiKey:"AIzaSyAZPTM3NbcRQjhHfmZ0zLlB_IiAnK20Hyk",authDomain:"catalogo-f43b0.firebaseapp.com",projectId:"catalogo-f43b0",storageBucket:"catalogo-f43b0.firebasestorage.app",messagingSenderId:"603628306546",appId:"1:603628306546:web:059eb3961844304d44c2eb"};
     const app=initializeApp(firebaseConfig),auth=getAuth(app),firestore=getFirestore(app);
-    const sharedDoc=doc(firestore,"workspaces","cobranzaCatalogo");
-    const status=document.getElementById('firebaseStatus');
-    let ready=false,remoteUpdate=false,lastPayload='';
+    const workspace="workspaces/cobranzaCatalogo",names=["clients","orders","sales","payments","reminders"],status=document.getElementById('firebaseStatus');
+    const cache={clients:{},orders:{},sales:{},payments:{},reminders:{},settings:{}};let ready=false,hydrated=0,remoteUpdate=false,pushing=false;
     const setStatus=(text,kind='warn')=>{status.textContent=text;status.className='badge '+kind;};
-    const getPayload=()=>JSON.stringify(window.__cobranza.getState());
-    const push=async()=>{if(!ready||remoteUpdate)return;const payload=getPayload();if(payload===lastPayload)return;try{await setDoc(sharedDoc,{payload,updatedAt:serverTimestamp(),lastWriter:auth.currentUser?.uid||null});lastPayload=payload;setStatus('Firebase sincronizado','ok');}catch(error){console.error(error);setStatus('Sin conexión; guardado local','warn');}};
-    window.addEventListener('cobranza:changed',()=>push());
-    window.addEventListener('online',()=>{setStatus('Conectando a Firebase…','warn');push();});
-    window.addEventListener('offline',()=>setStatus('Sin conexión; guardado local','warn'));
+    const refFor=(name,id)=>doc(firestore,`${workspace}/${name}/${id}`),colFor=name=>collection(firestore,`${workspace}/${name}`),clone=v=>JSON.parse(JSON.stringify(v)),state=()=>window.__cobranza.getState(),same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+    const pullCollection=async name=>{const snap=await getDocs(colFor(name));snap.forEach(d=>cache[name][d.id]={id:d.id,...d.data()});return snap.size;};
+    const migrateLegacy=async()=>{const legacy=await getDoc(doc(firestore,workspace));if(!legacy.exists()||!legacy.data()?.payload)return;let old;try{old=JSON.parse(legacy.data().payload)}catch{return}const totals=await Promise.all(names.map(pullCollection));if(totals.some(n=>n>0))return;for(const name of names)for(const item of old[name]||[])await setDoc(refFor(name,item.id),item);if(old.settings)await setDoc(refFor('settings','main'),old.settings);};
+    const push=async()=>{if(!ready||remoteUpdate||pushing)return;pushing=true;try{const current=state();for(const name of names){const localById=Object.fromEntries((current[name]||[]).map(x=>[x.id,x]));for(const [id,item] of Object.entries(localById))if(!same(item,cache[name][id])){await setDoc(refFor(name,id),item);cache[name][id]=clone(item);}for(const id of Object.keys(cache[name]))if(!localById[id]){await deleteDoc(refFor(name,id));delete cache[name][id];}}if(!same(current.settings,cache.settings)){await setDoc(refFor('settings','main'),current.settings);cache.settings=clone(current.settings);}setStatus('Firebase sincronizado','ok');}catch(error){console.error(error);setStatus('Error al sincronizar; guardado local','warn');}finally{pushing=false;}};
+    const listenCollection=name=>onSnapshot(colFor(name),snap=>{const next={};snap.forEach(d=>next[d.id]={id:d.id,...d.data()});cache[name]=next;if(ready&&!remoteUpdate){remoteUpdate=true;window.__cobranza.replaceCollection(name,Object.values(next));remoteUpdate=false;}hydrated++;if(hydrated===names.length){remoteUpdate=true;for(const n of names){const local=Object.fromEntries((state()[n]||[]).map(x=>[x.id,x]));window.__cobranza.replaceCollection(n,Object.values({...local,...cache[n]}));}remoteUpdate=false;ready=true;push();}setStatus('Datos actualizados en tiempo real','ok');},error=>{console.error(error);setStatus('Sin conexión; guardado local','warn');});
+    window.addEventListener('cobranza:changed',()=>push());window.addEventListener('online',()=>{setStatus('Reconectando…','warn');push();});window.addEventListener('offline',()=>setStatus('Sin conexión; guardado local','warn'));
     signInAnonymously(auth).catch(error=>{console.error(error);setStatus('Activa acceso anónimo en Firebase','danger');});
-    onAuthStateChanged(auth,async user=>{
-      if(!user)return;
-      setStatus('Usuario anónimo conectado','ok');
-      try{
-        const initial=await getDoc(sharedDoc);
-        if(!initial.exists())await push();
-        onSnapshot(sharedDoc,snap=>{
-          const data=snap.data();
-          if(!data?.payload)return;
-          if(data.payload===getPayload()){lastPayload=data.payload;setStatus('Firebase sincronizado','ok');return;}
-          remoteUpdate=true;
-          try{window.__cobranza.replaceState(JSON.parse(data.payload));lastPayload=data.payload;setStatus('Datos actualizados en tiempo real','ok');}
-          catch(error){console.error(error);setStatus('Error en datos remotos','danger');}
-          finally{remoteUpdate=false;}
-        },error=>{console.error(error);setStatus('Sin conexión; guardado local','warn');});
-        ready=true;
-        await push();
-      }catch(error){console.error(error);setStatus('Configura Firestore y sus reglas','danger');}
-    });
+    onAuthStateChanged(auth,async user=>{if(!user)return;setStatus('Usuario anónimo conectado','ok');try{await migrateLegacy();names.forEach(listenCollection);const settingsSnap=await getDoc(refFor('settings','main'));if(settingsSnap.exists()){cache.settings=settingsSnap.data();window.__cobranza.replaceSettings(cache.settings);}else cache.settings=clone(state().settings);if(hydrated===names.length){ready=true;await push();}}catch(error){console.error(error);setStatus('Configura Firestore y sus reglas','danger');}});
   </script>
 </body>
 </html>
